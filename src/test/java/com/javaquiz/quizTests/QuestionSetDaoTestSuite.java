@@ -10,9 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @RunWith(SpringRunner.class)
@@ -22,26 +20,23 @@ public class QuestionSetDaoTestSuite {
     @Autowired
     private QuestionSetDao questionSetDao;
 
+    private Question question1 = new Question(1,"What is the difference between JDK and JRE?", "Basics");
+    private Question question2 = new Question(2,"What is Java Virtual Machine?", "Basics");
+    private Question question3 = new Question(3,"What is JIT compiler?", "Basics");
+    private User user1 = new User(1,"Leon TheProfessional","leon.theprofessional@gmail.com");
+    private User user2 = new User(2,"Mathilda Lando","mathilda.lando@gmail.com");
+    private Set<Question> questionList1 = new HashSet<>();
+    private Set<Question> questionList2 = new HashSet<>();
+    private QuestionSet questionSet1 = new QuestionSet(1);
+    private QuestionSet questionSet2 = new QuestionSet(2);
+
     @Test
     public void testQuestionSetDaoSave(){
         //given
-
-        Question question1 = new Question(1,"What is the difference between JDK and JRE?", "Basics");
-        Question question2 = new Question(2,"What is Java Virtual Machine?", "Basics");
-        Question question3 = new Question(3,"What is JIT compiler?", "Basics");
-        User user1 = new User(1,"Leon TheProfessional","leon.theprofessional@gmail.com");
-        User user2 = new User(2,"Mathilda Lando","mathilda.lando@gmail.com");
-
-        Set<Question> questionList1 = new HashSet<>();
-        Set<Question> questionList2 = new HashSet<>();
-
         questionList1.add(question1);
         questionList1.add(question2);
         questionList2.add(question2);
         questionList2.add(question3);
-
-        QuestionSet questionSet1 = new QuestionSet(1);
-        QuestionSet questionSet2 = new QuestionSet(2);
 
         questionSet1.setQuestionList(questionList1);
         questionSet2.setQuestionList(questionList2);
@@ -59,5 +54,15 @@ public class QuestionSetDaoTestSuite {
         //clean up
         questionSetDao.delete(questionSet1.getId());
         questionSetDao.delete(questionSet2.getId());
+    }
+
+    @Test
+    public void testQuestionSetChooseAnswered(){
+        //given
+
+        //when
+        //then
+        //clean up
+        questionSetDao.deleteAll();
     }
 }

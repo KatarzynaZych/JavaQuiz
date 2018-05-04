@@ -3,6 +3,7 @@ package com.javaquiz.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.*;
 
 @Entity
@@ -13,7 +14,7 @@ public class QuestionSet {
     private User user;
     private Set<Question> questionList = new HashSet<>();
     private int score;
-    private boolean isAsnwered;
+    private LocalDate created;
 
     public QuestionSet(int id) {
         this.id = id;
@@ -67,5 +68,14 @@ public class QuestionSet {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDate created) {
+        this.created = created;
     }
 }

@@ -10,4 +10,10 @@ import java.util.List;
 public interface AnswerDao extends CrudRepository <Answer, Integer> {
 
     List<Answer> findByContent(String content);
+
+    List<Answer> findAnswerByCorrectTrue();
+
+    List<Answer> findAnswerByCorrectFalse();
+
+    List<Answer> findById(int id);
 }
